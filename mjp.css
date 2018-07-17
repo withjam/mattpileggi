@@ -1,0 +1,52 @@
+body {
+  font-family: Optima, Verdana, sans-serif;
+  font-size: 16px;
+  display: flex;
+  flex-flow: column;
+  padding: 0;
+  margin: 0;
+}
+
+body > header {
+  background-color: #EFF;
+  flex-basis: 1;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+body > header > #logo {
+  width: 33%;
+}
+
+body > header > nav > ul {
+  display: flex;
+  flex-flow: row;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+body > header > nav > ul > li {
+  margin: 0 1em;
+}
+
+body > main {
+  padding-bottom: 3em;
+}
+
+main > article {
+  height: 300px;
+  border: dashed #EEE 1px;
+  margin: 1em 0;
+  padding: 1em;
+  overflow: hidden;
+}
+
+main > article > header {
+  position: relative;
+  display: inline-block;
+}
+main > article > .content {
+  position: relative;
+}
