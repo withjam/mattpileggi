@@ -1,6 +1,7 @@
 <html>
 <head>
-  <title>Matt Pileggi - UX Developer</title>
+  <meta key="title" value="Matt Pileggi - UX Developer">
+  <title>Testing Ground</title>
   <link rel="stylesheet" href="mjp.css" type="text/css">
 </head>
 
@@ -8,44 +9,89 @@
 
   <header id="header">
 
-    <h1 id="logo">Matt Pileggi - UX Developer</h1>
+    <h1 id="logo">Top of Page</h1>
     <nav>
       <ul class="links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#career">Career</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#hero">Hero</a></li>
+        <li><a href="#career">Area 1</a></li>
+        <li><a href="#portfolio">Area 2</a></li>
       </ul>
     </nav>
 
   </header>
 
-  <main id="main">
+  <main>
 
-    <a name="about"></a>
-    <article id="about">
-      <header><h2>About Matt Pileggi</h2></header>
-      <section class="content">
-        <p>Stuff goes here</p>
-      </section>
-    </article>
+    <a name="hero"></a>
+    <section id="hero">
+      <header><h2>Hero Area</h2></header>
+      <article class="content">
+        <p><em>Handcrafted</em> HTML, CSS, and JavaScript.  A seemingly lost art in this age of frameworks, grid layouts, and single-page applications.  While great tools to have, libraries like Angular and React can often feel like square pegs. Selecting, and developing, the right tool for the job requires time spent ascertaining main objectives, listening to user feedback, and crafting a fantastic user experience.  Regardless of the language, framework, or technology, we can work together to achieve that.<p>
+        <p class="lets_talk"><a href="mailto:matt@mattpileggi.com">Let's Talk</a></p>
+      </article>
+    </section>
 
     <a name="career"></a>
-    <article id="career">
-      <header><h2>Matt Pileggi's Career</h2></header>
-      <section class="content">
-        <p>Work history goes here</p>
-      </section>
-    </article>
+    <section id="career">
+      <div class="parallax" aria-hidden="true">
+        <div class="parallax-slides">
+          <img src="night-sky.svg">
+          <img src="rocket.png" data-invert data-coeffecient="0.5" class="tall">
+        </div>
+      </div>
+      <header><h2>Area 1</h2></header>
+      <article class="content">
+        <dl class="scrollplay">
+          <dt>Started in 1998</dt>
+          <dd>Began web development at the early stages of the WWW as part of electronic publisher.  Created HTML with sparing amounts of JavaScript</dd>
+          <dt>E-commerce Background</dt>
+          <dd>Joined an e-commerce startup in 1999 and developed production websites for companies such as Dick's Sporting Goods, Kmart, and Linens N Things.  I thrive in a fast-paced, high energy environment where efficient results are valued above beauracratic processes.</dd>
+          <dt>Web Consultant</dt>
+          <dd>Spent many years as a UI/UX consultant as web browsers became more capable and companies started to value the front-end.  I continue to maintain a primary focus on the end-user experience and employ various techniques such as User Centered Design, multivariate testing, and usability studies.</dd>
+          <dt>Agile Enthusiast</dt>
+          <dd>I'm a huge proponent of the core of Agile thinking. Regardless of the form it takes - scrums, sprints, kanban, epics, stories, etc - the end goal of failing fast, iterating on success, and expediting time to market rings true for all verticals.</dd>
+          <dt>Modern Technology</dt>
+          <dd>I've worked with vanilla Javascript since 1998 and have used most of the libraries/frameworks that have arisen along the way.  I've been working with Node, both as a middle-tier and a development environment, since it burst on the scene. After 4 years of experience with AngularJS, I've been most recently working with Angular6, Angular CLI, Redux/NGRX.</dd>
+          <dt>Reliable Contributor</dt>
+          <dd>My work history spans startups to enterprises, Java to JavaScript, HTML and CSS to Angular and REST.  I've worked in a variety of verticals, from Sporting Goods to NoSQL Databases.  Through it all, I've learned to develop rapidly, test effeciently, and deliver production-worthy code that works at scale.</dd>
+        </dl>
+      </article>
+    </section>
 
     <a name="portfolio"></a>
-    <article id="portfolio">
-      <header><h2>Matt Pileggi's Portfolio</h2></header>
-      <section class="content">
-        <p>Site portfolio</p>
-      </section>
-    </article>
+    <section id="portfolio">
+      <header><h2>Area 2</h2></header>
+      <article class="content">
+        <ul class="cards">
+          <li data-example="disney">
+            <strong class="title">Video Playback for Disney/ETC</strong>
+            <div class="preview"><img src="examples/suitcase.jpg" alt="The Suitcase - Disney/ABC Short Film"></div>
+          </li>
+          <li data-example="disney">
+            <strong class="title">Video Playback for Disney/ETC</strong>
+            <div class="preview"><img src="examples/suitcase.jpg" alt="The Suitcase - Disney/ABC Short Film"></div>
+          </li>
+          <li data-example="disney">
+            <strong class="title">Video Playback for Disney/ETC</strong>
+            <div class="preview"><img src="examples/suitcase.jpg" alt="The Suitcase - Disney/ABC Short Film"></div>
+          </li>
+          <li data-example="disney">
+            <strong class="title">Video Playback for Disney/ETC</strong>
+            <div class="preview"><img src="examples/suitcase.jpg" alt="The Suitcase - Disney/ABC Short Film"></div>
+          </li>
+          <li data-example="disney">
+            <strong class="title">Video Playback for Disney/ETC</strong>
+            <div class="preview"><img src="examples/suitcase.jpg" alt="The Suitcase - Disney/ABC Short Film"></div>
+          </li>
+        </ul>
+      </article>
+    </section>
 
   </main>
+
+  <footer>
+    <div>Footer</div>
+  </footer>
 
   <script src="mjp.js" type="text/javascript"></script>
 </body>

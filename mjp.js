@@ -18,18 +18,17 @@
   };
 
   // first we need to identify and calculate all of the articles
-  const articles = document.querySelectorAll('main > article');
-
-  var animations, halfway, innerHeight;
-
+  const articles = document.querySelectorAll('main > section');
+  const parallaxes = document.querySelectorAll('.parallax');
+  var animations, halfway, innerHeight, paralax;
 
   const initialize = () => {
     innerHeight = window.innerHeight;
-    halfway = innerHeight/2;
+    halfway = innerHeight/3;
     animations = [];
     // initialize article animations
     articles.forEach(art => {
-      art.style.height = art.clientHeight;
+      //art.style.height = art.clientHeight;
       let rect = art.getBoundingClientRect();
       let header = art.querySelector('header');
       let content = art.querySelector('.content');
@@ -52,15 +51,12 @@
       animations.push(animation);
 
     });
-  }
 
-
-  const updateArticles = () => {
-    filter(articles, isVisible).forEach(art => {
-      console.log('visible', art);
-      art.setAttribute('visibility','true');
+    parallaxes.forEach(div => {
+      let div_h = div.clientHeight/2;
+      div.parallax_slides = div.querySelectorAll('.parallax-slides > img');
     });
-  };
+  }
 
   const animate = () => {
     window.requestAnimationFrame(animate);
@@ -72,6 +68,7 @@
     animations.forEach(an => {
       // only bother with the visible elements
       if (an.top < viewbot) {
+        an.ele.setAttribute('visibility','true');
         let steps = (an.header.rect.width + an.header.rect.left)  / midheight * 1.75;
         let left = Math.min(steps * (viewmid - an.top), 0);
         an.header.ele.style.left = left;
@@ -82,6 +79,24 @@
         an.content.ele.style.top = -Math.min(steps * (viewmid - an.top), 0);
         an.content.ele.style.opacity = opacity;
       }
+    });
+
+    // animate parallax
+    parallaxes.forEach(div => {
+      const rect = div.getBoundingClientRect();
+      const offsetY = halfway - rect.top + rect.height/2;
+      div.parallax_slides.forEach(img => {
+        let axis = img.getAttribute('data-axis');
+        let invert = img.hasAttribute('data-invert');
+        let change = offsetY * parseFloat(img.getAttribute('data-coeffecient') || 0.1);
+        if (invert) change = change * -1;
+        // TODO: make the change a percentage and apply it the overall height of the area
+        if (!axis || axis !== 'x') {
+          img.style.top = invert ? change + img.clientHeight/2 : change - img.clientHeight/2;
+        } else {
+          img.style.left = invert ? change + img.clientWidth/2 : change - img.clientWidth/2;
+        }
+      })
     });
   }
 
