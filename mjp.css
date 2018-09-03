@@ -222,3 +222,27 @@ footer {
   padding: 0.5em 0 0.75em;
   margin: 0;
 }
+
+#modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0,0,0,0.75);
+}
+
+#modal #modal_container {
+  width: 60%;
+  height: 65%;
+  margin:5% auto 0;
+  background: #FFF;
+  padding: 1em;
+}
+
+#modal.closed {
+  display: none;
+}
+
+
+

@@ -105,6 +105,87 @@
     });
   }
 
+  function xhrLoadHandler(success, failure) {
+    console.log('returning xhrLoadHandler');
+    return function() {
+      console.log('xhr loaded', this.status);
+      try {
+        if (this.status && this.status === 200) {
+          success.call(this, this.responseText, this);
+        } else if (failure) {
+          failure.call(this, this.status, this)   
+        }
+      } catch(ex) {
+        console.log('error handling XHR response', ex);
+      }
+    }
+  }
+
+  function get(url, cb) {
+    var xhr = new XMLHttpRequest();
+    xhr.addEventListener('load', xhrLoadHandler(cb));
+    xhr.open('GET', url);
+    xhr.send();
+  }
+
+  function showAsModal(url) {
+    modal = document.getElementById('modal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'modal';
+      modal.innerHTML = '<div id="modal_container"><header class="modal_header">Modal</header><article class="modal_content"></article></div>';
+      document.querySelector('main').appendChild(modal);
+      modal.addEventListener('click', handleModalClick);  
+    }
+    get(url, (data) => {
+      // get only what is within main
+      var frag = document.createDocumentFragment();
+      var dummy = document.createElement('div');
+      dummy.id = 'dummy';
+      dummy.innerHTML = data;
+      frag.appendChild(dummy);
+      modal.querySelector('.modal_content').innerHTML = frag.querySelector('main').innerHTML;
+      modal.className = 'open';
+    });
+  }
+
+  function handleModalClick(ev) {
+    var target = ev.target;
+    console.log('modal click', target);
+    var close = document.getElementById('modal_close');
+    var overlay = document.getElementById('modal');
+    if (target === close || target === overlay) {
+      console.log('closing');
+      var modal = document.getElementById('modal');
+      if(modal) {
+        modal.className = 'closed';
+      }
+    }
+  }
+
+  function linkAsModal(e) {
+    var paths = e.path.length, a = e.path[0];
+    while(paths-- && a.tagName !== 'A') {
+      a = e.path[paths];
+    }
+    if (a) {
+      var url = a.getAttribute('href');
+      console.log('link as modal', url, a);
+      if (url) {
+        showAsModal(url);
+        e.preventDefault();
+        e.cancelBubble = true;
+        return false;
+      }
+    }
+  }
+
+  // attach to all the project links
+  var project_links = document.querySelectorAll('#projects a[target]');
+  project_links.forEach((l) => {
+    l.addEventListener('click', linkAsModal);
+  });
+
   initialize();
   animate();
 
