@@ -7,10 +7,12 @@ body {
   margin: 0;
 }
 
+a, a:visited, a:active { color: #242935 }
+
 body > header {
-  background-color: #EFF;
-  flex-basis: 1;
-  padding: 1em;
+  background-color: #62929E;
+  color: #242935;
+  padding: 2em 4em;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,6 +28,7 @@ body > header > nav > ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  font-size: 1.125em;
 }
 body > header > nav > ul > li {
   margin: 0 1em;
@@ -57,22 +60,25 @@ ul.cards {
   margin: 0;
   padding: 0;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
 }
 
 ul.cards > li {
-  flex: 0 1 31%;
-  position: relative;
-  border: solid 1em transparent;
+  flex: 0 1 25%;
+  padding: 15px;
 }
 
-ul.cards li > .title {
+ul.cards li .title {
   font-size: 1.5em;
   display: inline-block;
   text-align: center;
   width: 100%;
   padding: 0.5em;
+}
+
+ul.cards li a {
+  text-decoration: none;
+  color: inherit;
 }
 
 ul.cards li img {
@@ -81,8 +87,8 @@ ul.cards li img {
 
 footer {
   padding: 5em 1em;
-  background-color: #4e5e6e;
-  border-bottom: 2em solid #123;
+  background-color: #DDD1C7;
+  border-bottom: 1em solid #233D4D;
 }
 
 .parallax {
@@ -99,7 +105,7 @@ footer {
   height: 100%;
 }
 .parallax img {
-  width: 200%;
+  width: 125%;
   height: auto;
   position: absolute;
   left: 0;
@@ -123,8 +129,8 @@ footer {
 
 #hero article {
   font-size: 1.45em;
-  padding: 1rem;
   line-height: 1.675;
+  color: #81726A;
 }
 
 #hero article em {
@@ -141,20 +147,70 @@ footer {
 
 #hero article .lets_talk a {
   display: inline-block;
-  padding: 0.5em 2em;
-  background-color: #333;
+  background-color: #242935;
   text-decoration: none;
   color: #EEE;
   margin-top: 2em;
+  padding: 0.5em 1em;
+}
+
+#quote1 {
+  padding: 5em;
+  font-size: 1.5em;
+  background-color: #F9FAEA;
+  text-align: center;
+}
+
+#quote1 blockquote {
+  font-size: 1.75em;
+  font-weight: 500;
+  display: inline-block;
+  position: relative;
+}
+#quote1 blockquote:before {
+  content: '';
+  background-image: url('quotes.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.15;
+  width: 6em;
+  height: 6em;
+  position: absolute;
+  top: -3em;
+  left: -3em;
+  display: block;
+  transform: rotate(5deg);
+}
+#quote1 blockquote:after {
+  content: '';
+  background-image: url('quotes.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.15;
+  width: 6em;
+  height: 6em;
+  position: absolute;
+  top: -1.5em;
+  right: -3em;
+  display: block;
+  transform: rotate(195deg);
+}
+
+#quote1 .author {
+  font-size: 1.25em;
+  font-style: italic;
+}
+#quote1 .author:before {
+  content: '--';
 }
 
 #career header, #career .content {
   color: #FFF;
-  mix-blend-mode: exclusion;
+  font-size: 1.25em;
+  text-shadow: 0 1px 0 black; 
 }
 
 #career dl {
-  background-color: rgba(0,0,0,0.25);
   padding: 1em;
 }
 

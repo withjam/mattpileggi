@@ -24,7 +24,7 @@
 
   const initialize = () => {
     innerHeight = window.innerHeight;
-    halfway = innerHeight/3;
+    halfway = innerHeight/3.5;
     animations = [];
     // initialize article animations
     articles.forEach(art => {
@@ -58,9 +58,13 @@
     });
   }
 
+  var i = 0, last_scroll = 0;
   const animate = () => {
     window.requestAnimationFrame(animate);
     let scrollTop = document.body.scrollTop;
+    let scrollDiff = scrollTop - last_scroll;
+    last_scroll = scrollTop;
+    if (scrollTop && Math.abs(scrollDiff) < 2) return; // keep it smooth, no jitters
     let viewbot = innerHeight + scrollTop;
     let viewmid = scrollTop + halfway;
     let midheight = innerHeight - halfway;
@@ -69,13 +73,14 @@
       // only bother with the visible elements
       if (an.top < viewbot) {
         an.ele.setAttribute('visibility','true');
-        let steps = (an.header.rect.width + an.header.rect.left)  / midheight * 1.75;
+        let steps = an.header.rect.width  / midheight * 1.75;
         let left = Math.min(steps * (viewmid - an.top), 0);
         an.header.ele.style.left = left;
         let opacity = (an.header.rect.width + left)/ an.header.rect.width;
         an.header.ele.style.opacity = opacity;
         // slide content up
-        steps = (an.content.rect.height + an.content.rect.top)  / midheight;
+        steps = an.content.rect.height  / midheight;
+        //console.log('sliding up, steps: %d, viewmid: %d, an.top: %d', steps, viewmid, an.top);
         an.content.ele.style.top = -Math.min(steps * (viewmid - an.top), 0);
         an.content.ele.style.opacity = opacity;
       }
