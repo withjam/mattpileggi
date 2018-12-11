@@ -105,8 +105,8 @@ footer {
   height: 100%;
 }
 .parallax img {
-  width: 125%;
-  height: auto;
+  width: 200%;
+  height: 200%;
   position: absolute;
   left: 0;
   top: 0;
@@ -207,7 +207,7 @@ footer {
 #career header, #career .content {
   color: #FFF;
   font-size: 1.25em;
-  text-shadow: 0 1px 0 black; 
+  text-shadow: -1px 4px 1px black; 
 }
 
 #career dl {
@@ -246,3 +246,6 @@ footer {
 
 
 
+@media screen and (max-width: 600px) {
+  .parallax { display: none}
+}
